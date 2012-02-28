@@ -174,7 +174,7 @@
 			</class>
 		</class>
 		
-		<class id="uncl" name="UNCLASSIFIED" onSlopeVisible="false" lcpField="XINDEX" excluded="true">
+		<class id="uncl" name="UNCLASSIFIED" onSlopeVisible="false" lcpField="XINDEX">
 			<class id="unclo" name="UNCLASSIFIED">
 		<!--	<value id="990"/>  -->
 				<value id="999"/>				

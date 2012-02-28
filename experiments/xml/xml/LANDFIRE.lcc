@@ -104,10 +104,10 @@
 	<classes>
 
 		<class id="watt" name="Water" lcpField="WINDEX">
-			<class id="watr" name="Water" excluded="true">
+			<class id="watr" name="Water">
 				<value id="11"/>
 			</class>												
-			<class id="snow" name="Snow/ice" excluded="true">
+			<class id="snow" name="Snow and Ice">
 				<value id="12"/>
 			</class>				
 		</class>			
