@@ -1,5 +1,5 @@
 *Summary*
-_______
+---------
 A Python package with personal utilities.
 
 *License*
@@ -26,8 +26,7 @@ A Python package with personal utilities.
 </pre>
 
 *Description*
-___________
-
+-------------
 
 The folder **experimental** contains miscellaneous experiments and tests.  Items from here would be migrated to **magis**.
 
