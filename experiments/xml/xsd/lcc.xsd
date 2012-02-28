@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+	References:	
+		W3C XSD Validator:  
+		http://www.w3.org/2001/03/webdata/xsv
+		
+		xs:choice example:
+		http://stackoverflow.com/questions/2290360/xsd-how-to-allow-elements-in-any-order-any-number-of-times
+		
+-->
+
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	
 	
@@ -26,7 +36,7 @@
 	<!--Value Type-->
 	<xs:complexType name="valueType">
 				
-		<xs:attribute name="id" type="xs:positiveInteger" use="required" />
+		<xs:attribute name="id" type="xs:nonNegativeInteger" use="required" />
 		<xs:attribute name="name" type="xs:string" use="optional" />
 		<xs:attribute name="excluded" type="xs:boolean" use="optional" />
 
@@ -51,24 +61,23 @@
 	<!--ClassValue Type-->
 	<xs:complexType name="classValueType">
 		
-		<xs:attribute name="id" type="xs:positiveInteger" use="required" />
+		<xs:attribute name="id" type="xs:nonNegativeInteger" use="required" />
 		
 	</xs:complexType>
   
 	
 	<!--Class Type-->
 	<xs:complexType name="classType">    
-		<xs:sequence minOccurs="0" maxOccurs="unbounded">
-			
-			<xs:element name="class" type="classType"/>
-			<xs:element name="value" type="classValueType"/>	
-			
-		</xs:sequence>		
-		
+
+		<xs:choice>
+			<xs:element name="class" type="classType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="value" type="classValueType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>			
+
 		<xs:attribute name="id" type="xs:string" use="required" />
 		<xs:attribute name="name" type="xs:string" use="required" />
 		<xs:attribute name="onSlopeVisible" type="xs:boolean" use="optional" />
-		<xs:attribute name="lcpField" type="xs:boolean" use="optional" />	
+		<xs:attribute name="lcpField" type="xs:string" use="optional" />	
 
 	</xs:complexType>
 
