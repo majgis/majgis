@@ -28,7 +28,7 @@ A Python package with personal utilities.
 *Description*
 -------------
 
-The folder **experimental** contains miscellaneous experiments and tests.  Items from here would be migrated to **magis**.
+The folder **experiments** contains miscellaneous experiments and tests.  Items from here would be migrated to **magis**.
 
 The folder **majgis** contains mature utilities.  These utilities might be migrated to their own projects eventually.
 
