@@ -27,14 +27,50 @@
 
 from lxml import etree
 import sys
+from glob import glob
+
 
 def main(argv):
-    pass
+    ''' Script to validate '''
+    
+    xsdPath = argv[1]
+    xmlSearch = argv[2]
+    
+    xmlPaths = glob(xmlSearch)
+    
+    for xmlPath in xmlPaths:
+        validateXmlWithXsd(xsdPath, xmlPath)    
+    
 
+
+def validateXmlWithXsd(xsdPath, xmlPath):
+    '''Validate xml file using xsd file '''
+    
+    xmlFile = open(xmlPath)
+    xsdFile = open(xsdPath)
+    
+    xsd = etree.parse(xsdFile)
+    xml = etree.parse(xmlFile)
+    
+    schema = etree.XMLSchema(xsd)
+    
+    
+    if schema.validate(xml):
+        print
+        print xmlPath + ' is valid'
+    else:
+        print
+        print xmlPath + ' is INVALID!'
+        print schema.error_log.last_error
+    
+    
 
 if __name__ == "__main__":
     
-    argv = [__file__, '']
+    xsdPath = "xsd/lcc.xsd"
+    xmlSearch = "xml/*.lcc"
+    
+    argv = [__file__, xsdPath, xmlSearch]
     
     main(argv)
     
