@@ -93,8 +93,8 @@
 			<xs:sequence>
 
 				<xs:element name="metadata" type="metadataType"/>
-				<xs:element name="values" type="classesType"/>				
-				<xs:element name="classes" type="valuesType"/>
+				<xs:element name="values" type="valuesType"/>				
+				<xs:element name="classes" type="classesType"/>
 
 			</xs:sequence>
 		</xs:complexType>
