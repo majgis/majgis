@@ -46,3 +46,61 @@ def getLastLine(f, blockSize=3072):
         lastLine = lastLines[-2] 
     
     return lastLine 
+
+def multipleFileReadLines(filePaths): 
+    """ Generator for concurrent lines in files from a list of full file paths 
+     
+        A fileBuffer is loaded for each file, opening and then closing a single file at a time. 
+        The position in the file is recorded with each fileBuffer extraction,
+        so the next opening of the file will extract lines from the proper position.  
+        All files are assumed to have the same number of records, but line length need not be the same 
+    """ 
+ 
+    buffers = [] 
+    filePositions = [] 
+    
+    for filePath in filePaths: 
+        lines, filePosition= readMultipleFileLinesAndPositions(filePath) 
+        buffers.append(lines) 
+        filePositions.append(filePosition)  
+        
+    linesRemaining = True 
+ 
+    while linesRemaining: 
+        currentLines = [] 
+        for i,fileBuffer in enumerate(buffers): 
+            currentLines.append(fileBuffer[0].strip()) 
+ 
+            del fileBuffer[0] 
+                
+            if ( not(fileBuffer) and linesRemaining): 
+                lines, filePosition = readMultipleFileLinesAndPositions(filePaths[i],filePositions[i]) 
+                buffers[i] = lines 
+                filePositions[i] =  filePosition 
+                linesRemaining = bool(lines) 
+ 
+        yield currentLines 
+ 
+ 
+def readMultipleFileLinesAndPositions(filePath,startPosition=None, bytesToRead=1): 
+    """ Extracts lines from file, starting at the specified startPosition. 
+     
+        The file-object's readlines() method is used to extract lines,  
+        and the tell() method is used to return the position of the next line in the file. 
+        The bytesToRead value is passed as an argument to readlines().  The default bytesToRead value is set to 1  
+        so that readlines() uses its own default buffer size (somewhere near 8359 bytesToRead) 
+     
+    """ 
+    
+    f = open(filePath, 'rb') 
+    
+    if not startPosition is None: 
+        f.seek(startPosition) 
+    
+    lines = f.readlines(bytesToRead) 
+    position = f.tell() 
+    
+    f.close() 
+    
+    return lines, position 
+
