@@ -16,7 +16,20 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-""" Random Python experiments
-
-    Mature utilities are migrated to the majgis Python package.
+""" 
 """
+
+inFilePath = r"c:\temp\layers.txt"
+outFilePath = r"c:\temp\layers.csv"
+DELIM = ", "
+output = []
+
+for line in open(inFilePath):
+
+    if "label=" in line:
+        output.append(line.split('"')[1].replace(",", " -") + DELIM)
+    if "url=" in line:
+        output.append(line.split('"')[1])
+        output.append("\n")
+        
+open(outFilePath, 'w').writelines(output)

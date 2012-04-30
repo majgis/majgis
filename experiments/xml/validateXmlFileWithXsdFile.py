@@ -1,4 +1,4 @@
-#   Copyright 2012 Michael A. Jackson and majgis Contributors
+#   Copyright 2012 majgis Contributors
 #    
 #   Individuals comprising majgis Contributors are identified in 
 #   the NOTICE file found in the root directory of this project.

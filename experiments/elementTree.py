@@ -1,4 +1,4 @@
-#   Copyright 2012 Michael A. Jackson and majgis Contributors
+#   Copyright 2012 majgis Contributors
 #    
 #   Individuals comprising majgis Contributors are identified in 
 #   the NOTICE file found in the root directory of this project.
@@ -16,28 +16,40 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
+""" Element tree testing
 
-""" Experiments to validate an xml file against an xsd file
     
-    references:
-	http://lxml.de/validation.html#xmlschema
-      
 """
 
 
-from lxml import etree
-import sys
 
-def main(argv):
-    pass
+from xml.etree.ElementTree import Element, ElementTree
 
 
+
+class FolderTree(ElementTree):
+    """Element whith extra find or create method to create subelement from path if it doesn't exist"""
+    
+    PATH_SEPARATOR = "/"
+    FOLDER_TAG = "folder"
+    ROOT_TAG = "root"
+    FILE_TAG = "file"
+    
+    def __init__(self, folderItems):
+        """ Initialize object """
+        
+        self.folders = folderItems
+        
+        root = Element(self.ROOT_TAG)
+        self._setroot(root)
+        
+
+              
 if __name__ == "__main__":
     
-    args = [
-            ""            
-            ]
+    ft = FolderTree([])
+    print ft.getroot()
     
-    main(sys.argv)
+    
     
     

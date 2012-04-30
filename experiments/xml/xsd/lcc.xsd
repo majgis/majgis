@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
+<!-- 
+	XML Schema to validate Land Cover Classification (.lcc) files
+	
 	References:	
 		W3C XSD Validator:  
 		http://www.w3.org/2001/03/webdata/xsv

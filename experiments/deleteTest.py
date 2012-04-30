@@ -16,7 +16,12 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-""" Random Python experiments
+""" Does arcpy.DeleteField_management care about case of field name?
 
-    Mature utilities are migrated to the majgis Python package.
+    no!
 """
+
+import arcpy
+tablePath = r'F:\Temp\New_Shapefile.shp'
+fieldName = 'aTESt'
+arcpy.DeleteField_management(tablePath, fieldName)
