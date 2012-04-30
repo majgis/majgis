@@ -1,8 +1,7 @@
 If you contribute a new file:
   1. Cut and paste boilderplate notice at the bottom of this file
   2. Update the year if necessary
-  3. Replace <YOUR NAME> with your first and last names
-  4. Include a description of the file (replace <MODULE DESCRIPTION> if applicable)
+  3. Include a description of the file (replace <MODULE DESCRIPTION> if applicable)
 
 When you first make a contribution(new file or modify existing):
   1. Add your full name (email optional) in the NOTICE file
@@ -12,7 +11,7 @@ When you first make a contribution(new file or modify existing):
 BOILDERPLATE WITH PYTHON COMMENTING:
 ------------------------------------
 
-#   Copyright 2012 <YOUR NAME> and majgis Contributors
+#   Copyright 2012 majgis Contributors
 #    
 #   Individuals comprising majgis Contributors are identified in 
 #   the NOTICE file found in the root directory of this project.
@@ -40,7 +39,7 @@ BOILDERPLATE WITH PYTHON COMMENTING:
 BOILERPLATE WITHOUT PYTHON COMMENTING:
 --------------------------------------
 
-   Copyright 2012 <YOUR NAME> and majgis Contributors
+   Copyright 2012 majgis Contributors
     
    Individuals comprising majgis Contributors are identified in 
    the NOTICE file found in the root directory of this project.
