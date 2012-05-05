@@ -7,6 +7,8 @@ import os
 ###############################
 # Using Finally without except
 try:
+    # Use this method when a custom error is not needed
+    # This inner try/except would be inside a function
     try:
         os.chdir('fail')
     finally:
@@ -19,7 +21,7 @@ except Exception, e:
     print "As expected, a 'finally' without an 'except' does not stop the propagation of the exception.\n"
     
 ###############################################
-# Standare error handling
+# Common resources for error handling
 class ATtILA2Exception(Exception):
     """ Custom Exception """
     
@@ -32,6 +34,7 @@ def printError(e):
     # Known Error with a custom message based on context
     if isinstance(e, ATtILA2Exception):
         print msg
+        return
 
     # Known Error with a generic message
     else:
@@ -45,8 +48,14 @@ def printError(e):
 class constants:
     standardPrefix = 'ERROR ATtILA2-'
     id10tError = standardPrefix + "000001:  Custom Message"
+#############################################################
 
+
+# This outer try/catch block would be inside a run function
 try:
+    
+    # This inner try/except would be inside a library function
+    # Use this method when a custom is needed
     try:
         os.chdir('fail')
     
@@ -57,6 +66,7 @@ try:
         print "You can do clean up here"
         
 except Exception, e:
+    printError(e)
     
 
     
